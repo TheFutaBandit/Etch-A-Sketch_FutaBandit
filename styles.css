@@ -1,14 +1,28 @@
-body {
+#container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#container {
-    height: 490px;
-    width: 490px;
+/* #container {
+    height: 480px;
+    width: 480px;
     border: 1px solid red;
     display: flex;
+    flex-wrap: wrap;
+} */
+
+.reset {
+    margin: 18px;
+}
+
+.grid {
+    height: 480px;
+    width: 480px;
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .gridBox {
@@ -16,4 +30,5 @@ body {
     margin: 0px;
     height: 120px;
     width: 120px;
+    /* min-width: 120px; */
 }
