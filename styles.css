@@ -1,3 +1,4 @@
+
 #container {
     display: flex;
     flex-direction: column;
@@ -14,7 +15,9 @@
 } */
 
 .reset {
-    margin: 18px;
+    /* margin: 18px; */
+    width: 480px;  
+    display: flex;
 }
 
 .grid {
@@ -23,12 +26,15 @@
     border: 1px solid red;
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 .gridBox {
+    /* flex-grow: 1; */
     border: 1px solid black;
     margin: 0px;
-    height: 120px;
-    width: 120px;
+    box-sizing: border-box;
+    padding: 0px;
+    gap: 0px;
     /* min-width: 120px; */
 }
