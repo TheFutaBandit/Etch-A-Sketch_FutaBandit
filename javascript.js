@@ -67,10 +67,6 @@ function gridRemove(parentNode) {
     }
 }
 
-
-
-
-
 //DEFAULT initializations
 gridSet(numBoxes);
 
@@ -79,67 +75,23 @@ let gridBoxes = document.querySelectorAll('.gridBox');
 gridEventTrigger(gridBoxes);
 
 
-
-
-
-//functions
-// function setBoxColor(r,b,g) {
-//     node.setAttribute("style", `background-color: rgb(${r},${b},${g})`);
-// }
-
-//events
-// grid.addEventListener('mouseover', function (e) {
-//     if(e.target.classList.contains('gridBox')) {
-//         let r_value = Math.floor((Math.random()*255));
-//         let b_value = Math.floor((Math.random()*255));
-//         let g_value = Math.floor((Math.random()*255));
-//         // e.target.style.background = `rgb(${r_value}, ${b_value}, ${g_value})`;
-//         setBoxColor(gridBox,r_value,b_value,g_value);
-//     }
-// })
-
-
-
-
-
+//reset button
 reset_button.addEventListener('click', () => {
     let gdb_reset = document.querySelectorAll('.gridBox');
-    // gdb_reset.forEach((item) => {
-    //     let r_value = 255;
-    //     let b_value = 255;
-    //     let g_value = 255;
-    //     item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
-    // })
     gridReset(gdb_reset);
 })
 
+//size button
 size_button.addEventListener('click', () => {
-    let nBoxes = prompt('enter bitch');
+    let nBoxes = prompt('enter please');
 
     gridReset(gridBoxes);
-
-    // while(grid.firstChild) {
-    //     grid.removeChild(grid.firstChild);
-    // }
+    
     gridRemove(grid);
-
-    // for(let i = 0; i<nBoxes*nBoxes;i++) {
-    //     const gridBox = document.createElement("div");
-    //     gridBox.classList.add("gridBox");
-    //     gridBox.setAttribute(`style`,`height: ${480/nBoxes}px; width: ${480/nBoxes}px;`);
-    //     grid.appendChild(gridBox);
-    // }
+    
     gridSet(nBoxes);
 
     let gdb = document.querySelectorAll('.gridBox');
-    // gdb.forEach((item) => {
-    //     item.addEventListener('mouseover', () => {
-    //         let r_value = Math.floor((Math.random()*255));
-    //         let b_value = Math.floor((Math.random()*255));
-    //         let g_value = Math.floor((Math.random()*255));
-    //         item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
-    //     });
-    // })
     gridEventTrigger(gdb);
 
 })
