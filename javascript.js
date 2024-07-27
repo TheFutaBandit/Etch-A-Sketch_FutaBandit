@@ -1,3 +1,6 @@
+//ALL INITIALIZATIONS
+
+
 //container initialization
 const container = document.querySelector("#container");
 
@@ -23,12 +26,57 @@ const grid = document.createElement("div");
 grid.classList.add('grid');
 container.appendChild(grid);
 
-for(let i = 0; i<numBoxes*numBoxes;i++) {
-    const gridBox = document.createElement("div");
-    gridBox.classList.add("gridBox");
-    gridBox.setAttribute(`style`,`height: ${480/numBoxes}px; width: ${480/numBoxes}px;`);
-    grid.appendChild(gridBox);
+//FUNCTIONS
+
+//function for setting/sizing up gridBoxes in the grid
+function gridSet(num_boxes) {
+    for(let i = 0; i<num_boxes*num_boxes;i++) {
+        const gridBox = document.createElement("div");
+        gridBox.classList.add("gridBox");
+        gridBox.setAttribute(`style`,`height: ${480/num_boxes}px; width: ${480/num_boxes}px;`);
+        grid.appendChild(gridBox);
+    }
 }
+
+//function for putting event_listeners
+function gridEventTrigger(parentNodeArray) {
+    parentNodeArray.forEach((item) => {
+        item.addEventListener('mouseover', () => {
+            let r_value = Math.floor((Math.random()*255));
+            let b_value = Math.floor((Math.random()*255));
+            let g_value = Math.floor((Math.random()*255));
+            item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+        });
+    })
+}
+
+//function for resetting children
+function gridReset(parentNodeArray) {
+    parentNodeArray.forEach((item) => {
+        let r_value = 255;
+        let b_value = 255;
+        let g_value = 255;
+        item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+    })
+}
+
+//function for removing children divs of parent
+function gridRemove(parentNode) {
+    while(parentNode.firstChild) {
+        grid.removeChild(grid.firstChild);
+    }
+}
+
+
+
+
+
+//DEFAULT initializations
+gridSet(numBoxes);
+
+let gridBoxes = document.querySelectorAll('.gridBox');
+
+gridEventTrigger(gridBoxes);
 
 
 
@@ -50,61 +98,49 @@ for(let i = 0; i<numBoxes*numBoxes;i++) {
 //     }
 // })
 
-let gridBoxes = document.querySelectorAll('.gridBox');
 
-
-
-gridBoxes.forEach((item) => {
-    item.addEventListener('mouseover', () => {
-        let r_value = Math.floor((Math.random()*255));
-        let b_value = Math.floor((Math.random()*255));
-        let g_value = Math.floor((Math.random()*255));
-        item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
-    });
-})
 
 
 
 reset_button.addEventListener('click', () => {
     let gdb_reset = document.querySelectorAll('.gridBox');
-    gdb_reset.forEach((item) => {
-        let r_value = 255;
-        let b_value = 255;
-        let g_value = 255;
-        item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
-    })
+    // gdb_reset.forEach((item) => {
+    //     let r_value = 255;
+    //     let b_value = 255;
+    //     let g_value = 255;
+    //     item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+    // })
+    gridReset(gdb_reset);
 })
 
 size_button.addEventListener('click', () => {
     let nBoxes = prompt('enter bitch');
 
-    gridBoxes.forEach((item) => {
-        let r_value = 255;
-        let b_value = 255;
-        let g_value = 255;
-        item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
-    })
+    gridReset(gridBoxes);
 
-    while(grid.firstChild) {
-        grid.removeChild(grid.firstChild);
-    }
+    // while(grid.firstChild) {
+    //     grid.removeChild(grid.firstChild);
+    // }
+    gridRemove(grid);
 
-    for(let i = 0; i<nBoxes*nBoxes;i++) {
-        const gridBox = document.createElement("div");
-        gridBox.classList.add("gridBox");
-        gridBox.setAttribute(`style`,`height: ${480/nBoxes}px; width: ${480/nBoxes}px;`);
-        grid.appendChild(gridBox);
-    }
+    // for(let i = 0; i<nBoxes*nBoxes;i++) {
+    //     const gridBox = document.createElement("div");
+    //     gridBox.classList.add("gridBox");
+    //     gridBox.setAttribute(`style`,`height: ${480/nBoxes}px; width: ${480/nBoxes}px;`);
+    //     grid.appendChild(gridBox);
+    // }
+    gridSet(nBoxes);
 
     let gdb = document.querySelectorAll('.gridBox');
-    
-    gdb.forEach((item) => {
-        item.addEventListener('mouseover', () => {
-            let r_value = Math.floor((Math.random()*255));
-            let b_value = Math.floor((Math.random()*255));
-            let g_value = Math.floor((Math.random()*255));
-            item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
-        });
-    })
+    // gdb.forEach((item) => {
+    //     item.addEventListener('mouseover', () => {
+    //         let r_value = Math.floor((Math.random()*255));
+    //         let b_value = Math.floor((Math.random()*255));
+    //         let g_value = Math.floor((Math.random()*255));
+    //         item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+    //     });
+    // })
+    gridEventTrigger(gdb);
+
 })
 
