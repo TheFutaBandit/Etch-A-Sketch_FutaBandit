@@ -17,7 +17,14 @@
 .reset {
     /* margin: 18px; */
     width: 480px;  
+    height: 120px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.reset_button{
+    flex: 0 0 0;
 }
 
 .grid {
@@ -31,7 +38,7 @@
 
 .gridBox {
     /* flex-grow: 1; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 0px;
     box-sizing: border-box;
     padding: 0px;

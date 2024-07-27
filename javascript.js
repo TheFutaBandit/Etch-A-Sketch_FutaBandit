@@ -66,11 +66,45 @@ gridBoxes.forEach((item) => {
 
 
 reset_button.addEventListener('click', () => {
+    let gdb_reset = document.querySelectorAll('.gridBox');
+    gdb_reset.forEach((item) => {
+        let r_value = 255;
+        let b_value = 255;
+        let g_value = 255;
+        item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+    })
+})
+
+size_button.addEventListener('click', () => {
+    let nBoxes = prompt('enter bitch');
+
     gridBoxes.forEach((item) => {
         let r_value = 255;
         let b_value = 255;
         let g_value = 255;
         item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+    })
+
+    while(grid.firstChild) {
+        grid.removeChild(grid.firstChild);
+    }
+
+    for(let i = 0; i<nBoxes*nBoxes;i++) {
+        const gridBox = document.createElement("div");
+        gridBox.classList.add("gridBox");
+        gridBox.setAttribute(`style`,`height: ${480/nBoxes}px; width: ${480/nBoxes}px;`);
+        grid.appendChild(gridBox);
+    }
+
+    let gdb = document.querySelectorAll('.gridBox');
+    
+    gdb.forEach((item) => {
+        item.addEventListener('mouseover', () => {
+            let r_value = Math.floor((Math.random()*255));
+            let b_value = Math.floor((Math.random()*255));
+            let g_value = Math.floor((Math.random()*255));
+            item.style.cssText += `background-color: rgb(${r_value},${b_value},${g_value});`
+        });
     })
 })
 
